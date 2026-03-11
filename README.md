@@ -1,16 +1,50 @@
-# React + Vite
+# Job Application Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React web application for tracking job applications, interview progress, and hiring outcomes.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Add job applications
+- Track company, role, status, date applied, and notes
+- Delete applications
+- Filter applications by status
+- Highlight active filter
+- Save data with localStorage so applications persist after  refresh
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- JavaScript
+- Vite
+- HTML
+- CSS
+- LocalStorage
 
-## Expanding the ESLint configuration
+## Aplication Preview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+![Job Application Tracker](src/assets/jobapplicationtrackerform.png)
+
+![Job Application Tracker](src/assets/jobapplicationtrackerfilterrow.png)
+
+![Job Application Tracker](src/assets/jobapplicationtrackerapplicationcard)
+
+## How It Works
+
+1. Enter application details in the form.
+2. Submit the form to add the application.
+3. Applications appear as cards below the form.
+4. Use the filter buttons to sort by application status.
+5. Delete applications when needed.
+6. Data stays saved in the browser using localStorage.
+
+## Future Improvements
+
+- Edit application details
+- Add dashboard stats
+- Sort by date
+- Export applications
+- Add follow-up reminders
+
+## Author
+
+Nicole Stephanie Haugaard Torres
