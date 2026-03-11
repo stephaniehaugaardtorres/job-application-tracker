@@ -23,8 +23,8 @@ export default function Dashboard() {
         : applications.filter((app) => app.status === filter);
 
     useEffect(() => {
-        localStorage.setItem("applications", JSON.stringify(applications));
-    });
+         localStorage.setItem("applications", JSON.stringify(applications));
+    }, [applications]);
 
     function handleChange(e) {
         const {name, value } = e.target;
@@ -129,11 +129,65 @@ export default function Dashboard() {
             <section className="applications-section">
                 <h2>Applications</h2>
 
-                {applications.length === 0 ? (
-                    <p>No applications yet.</p>
+               <div className="filter-row">
+                <button
+                    type="button"
+                    className={filter === "All" ? "active-filter" : ""}
+                    onClick={() => setFilter("All")}
+                >
+                    All
+                </button>
+
+                <button
+                    type="button"
+                    className={filter === "Applied" ? "active-filter" : ""}
+                    onClick={() => setFilter("Applied")}
+                >
+                    Applied
+                </button>
+
+                <button
+                    type="button"
+                    className={filter === "Interviewing" ? "active-filter" : ""}
+                    onClick={() => setFilter("Interviewing")}
+                >
+                    Interviewing
+                </button>
+
+                <button
+                    type="button"
+                    className={filter === "Offer" ? "active-filter" : ""}
+                    onClick={() => setFilter("Offer")}
+                >
+                    Offer
+                </button>
+
+                <button
+                    type="button"
+                    className={filter === "Rejected" ? "active-filter" : ""}
+                    onClick={() => setFilter("Rejected")}
+                >
+                    Rejected
+                </button>
+
+                <button
+                    type="button"
+                    className={filter === "Ghosted" ? "active-filter" : ""}
+                    onClick={() => setFilter("Ghosted")}
+                >
+                     Ghosted
+                    </button>    
+                </div>
+
+                {filteredApplications.length === 0 ? (
+                    <p>
+                        {filter === "All"
+                            ? "No applications yet."
+                            : `No ${filter.toLowerCase()} applications.`}
+                    </p>
                 ) : (
                     <div className="applications-list">
-                        {applications.map((app) => (
+                        {filteredApplications.map((app) => (
                             <div key={app.id} className="application-card">
                                 <h3>{app.company}</h3>
                                 <p><strong>Role:</strong> {app.role}</p>

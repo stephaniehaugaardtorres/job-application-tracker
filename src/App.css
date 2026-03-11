@@ -10,7 +10,7 @@ body {
 }
 
 .dashboard {
-  width: min(900ox, calc(100% - 48px));
+  width: min(900px, calc(100% - 48px));
   margin: 40px auto;
 }
 
@@ -63,4 +63,32 @@ button {
 .application-card h3 {
   margin-top: 0;
   margin-bottom: 12px;
+}
+
+.application-card p {
+  margin: 6px 0;
+}
+
+.filter-row {
+  display: flex;
+  gap: 10px;
+  margin: 16px 0 20px;
+  flex-wrap: wrap;
+}
+
+.filter-row button {
+  background: #e5e7eb;
+  color: #1f2937;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.filter-row button:hover {
+  background: #d1d5db;
+}
+
+.active-filter {
+  background: #2563eb !important;
+  color: white;
 }
