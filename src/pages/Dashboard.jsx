@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const initialForm = {
     company: "",
@@ -10,7 +10,21 @@ const initialForm = {
 
 export default function Dashboard() {
     const [formData, setFormData] = useState(initialForm);
-    const [applications, setApplications] = useState([]);
+    const [applications, setApplications] = useState(() => {
+        const saved = localStorage.getItem("applications");
+        return saved ? JSON.parse(saved) : [];
+    });
+
+    const [filter, setFilter] = useState("All");
+
+    const filteredApplications = 
+        filter === "All"
+        ? applications
+        : applications.filter((app) => app.status === filter);
+
+    useEffect(() => {
+        localStorage.setItem("applications", JSON.stringify(applications));
+    });
 
     function handleChange(e) {
         const {name, value } = e.target;
@@ -30,6 +44,12 @@ export default function Dashboard() {
 
         setApplications((prev) => [newApplication, ...prev]);
         setFormData(initialForm);
+    }
+
+    function deleteApplication(id) {
+        setApplications((prev) => 
+            prev.filter((app) => app.id !== id)
+        );
     }
 
     return (
@@ -120,6 +140,10 @@ export default function Dashboard() {
                                 <p><strong>Status:</strong>{app.status}</p>
                                 <p><strong>Date Applied:</strong>{app.dateApplied || "N/A"}</p>
                                 <p><strong>Notes:</strong>{app.notes || "no notes"}</p>
+
+                                <button onClick={() => deleteApplication(app.id)}>
+                                    Delete
+                                </button>
                             </div>
                          ))}
                     </div>    
